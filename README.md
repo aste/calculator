@@ -1,2 +1,2 @@
 # calculator
-A calculator with very basic functions
+// Odin exercise: Build a calculator with basic functionality, without using the eval() function
