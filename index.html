@@ -4,43 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Astes Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="calculatoricon.png" />
     <script src="calculatorApp.js" defer></script>
   </head>
   <body>
-    <br>
-    <form>
-        <input type="text" name="display" id="display" placeholder="0" value=""/>
-      </form>
-    </br>
-    <br>
-      <button type="button" name="allClear" value="" onclick="display.value = ''">AC</button>
-      <button type="button">±</button>
-      <button type="button">%</button>
-      <button type="button" class="operator">/</button>
-    </br>
-    <br>
-      <button type="button" name="seven" value="7" onclick="display.value += '7'">7</button>
-      <button type="button" name="eight" value="8" onclick="display.value += '8'">8</button>
-      <button type="button" name="nine" value="9" onclick="display.value += '9'">9</button>
-      <button type="button" class="operator">x</button>
-    </br>
-    <br>
-      <button type="button" name="four" value="4" onclick="display.value += '4'">4</button>
-      <button type="button" name="five" value="4" onclick="display.value += '5'">5</button>
-      <button type="button" name="six" value="6" onclick="display.value += '6'">6</button>
-      <button type="button" class="operator">-</button>
-    </br>
-    <br>
-      <button type="button" name="one" value="1" onclick="display.value += '1'">1</button>
-      <button type="button" name="two" value="2" onclick="display.value += '2'">2</button>
-      <button type="button" name="three" value="3" onclick="display.value += '3'">3</button>
-      <button type="button" class="operator">+</button>
-    </br>
-    <br>
-      <button type="button">0</button>
-      <button type="button">,</button>
-      <button type="button">=</button>
-    </br>
+    <div id="calculator">
+      <input
+        type="number"
+        onkeydown="return event.keyCode !== 69"
+        class="display"
+        placeholder="0"
+        value=""
+        onblur="focus()"
+        autofocus
+        autocomplete="off"
+      />
+      <div id="allKeys">
+        <!-- <button class="clear" value="" onclick="display.value = ''">C</button> -->
+        <button class="clear"">C</button>
+        <button class="operator">±</button>
+        <button class="operator">%</button>
+        <button class="operator">/</button>
+        <br />
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">x</button>
+        <br />
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">-</button>
+        <br />
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="operator">+</button>
+        <br />
+        <button>0</button>
+        <button class="dot">,</button>
+        <button class="equal">=</button>
+      </div>
+    </div>
   </body>
 </html>
