@@ -1,3 +1,12 @@
+/* --- Variables */
+
+:root {
+  --general-radius: 12px;
+  --display-height: 84px;
+}
+
+/* --- Main Styles --- */
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -8,22 +17,27 @@ input::-webkit-inner-spin-button {
   display: grid;
   height: 320px;
   width: 235px;
-  border-radius: 10px;
-  background-color: rgb(80, 80, 80);
+  border-radius: var(--general-radius);
+  background-color: rgb(75, 75, 75);
+  outline: black solid 1px;
 }
 
 #display {
-  height: 80px;
-  background-color: rgb(80, 80, 80);
-  border-radius: 10px 10px 0px 0px;
+  height: var(--display-height);
+  border-top: 1px solid rgb(150, 150, 150);
+  border-right: 1px solid rgb(150, 150, 150);
+  border-left: 1px solid rgb(150, 150, 150);
+  background-color: rgb(75, 75, 75);
+  border-radius: var(--general-radius) var(--general-radius) 0px 0px;
   text-align: right;
+  text-align: bottom;
+  font-size: 50px;
   color: white;
 }
 
 #allKeys {
-  padding-top: 84px;
+  /* padding-top: var(--display-height); */
   display: grid;
-  margin: 1px 1px 1px 1px;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 46px;
   grid-gap: 1px;
@@ -33,20 +47,32 @@ button {
   border-radius: 0px;
   background-color: rgb(125, 125, 125);
   border-color: transparent;
-  font-size: 18px;
+  font-size: 22px;
   color: white;
 }
 
 #zero {
   width: 118px;
   grid-column: 1 / 3;
-  border-radius: 0px 0px 0px 10px;
+  border-radius: 0px 0px 0px var(--general-radius);
 }
 
 #equal {
-  border-radius: 0px 0px 10px 0px;
+  border-radius: 0px 0px var(--general-radius) 0px;
 }
 
-button:active {
-  filter: brightness(120%);
+.orange {
+  background-color: orange;
+}
+
+.darkgrey {
+  background-color: rgb(90, 90, 90);
+}
+
+#allKeys button:active {
+  filter: brightness(70%);
+}
+
+#allKeys.orange button:active {
+  filter: brightness(80%);
 }
