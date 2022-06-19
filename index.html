@@ -11,27 +11,41 @@
   </head>
   <body>
     <div id="calculator">
-      <div id="display"></div>
+      <input
+        type="number"
+        onkeydown="return event.keyCode !== 69"
+        class="display"
+        placeholder="0"
+        value=""
+        onblur="focus()"
+        autofocus
+        autocomplete="off"
+      />
       <div id="allKeys">
-        <button class="operator darkgrey">AC</button>
-        <button class="operator darkgrey">±</button>
-        <button class="operator darkgrey">%</button>
-        <button class="operator orange">/</button>
+        <!-- <button class="clear" value="" onclick="display.value = ''">C</button> -->
+        <button class="clear"">C</button>
+        <button class="operator">±</button>
+        <button class="operator">%</button>
+        <button class="operator">/</button>
+        <br />
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button class="operator orange">x</button>
+        <button class="operator">x</button>
+        <br />
         <button>4</button>
         <button>5</button>
         <button>6</button>
-        <button class="operator orange">-</button>
+        <button class="operator">-</button>
+        <br />
         <button>1</button>
         <button>2</button>
         <button>3</button>
-        <button class="operator orange">+</button>
-        <button id="zero">0</button>
-        <button id="point">,</button>
-        <button id="equal" class="orange">=</button>
+        <button class="operator">+</button>
+        <br />
+        <button>0</button>
+        <button class="dot">,</button>
+        <button class="equal">=</button>
       </div>
     </div>
   </body>
