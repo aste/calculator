@@ -36,7 +36,6 @@ input::-webkit-inner-spin-button {
 }
 
 #allKeys {
-  /* padding-top: var(--display-height); */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 46px;
