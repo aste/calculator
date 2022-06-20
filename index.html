@@ -7,11 +7,20 @@
     <title>Astes Calculator</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="calculatoricon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
     <script src="calculatorApp.js" defer></script>
   </head>
+
   <body>
     <div id="calculator">
-      <div id="display"></div>
+      <div id="display">
+        <div id="digits"></div>
+      </div>
       <div id="allKeys">
         <button class="operator darkgrey">AC</button>
         <button class="operator darkgrey">±</button>
@@ -30,7 +39,7 @@
         <button>3</button>
         <button class="operator orange">+</button>
         <button id="zero">0</button>
-        <button id="point">,</button>
+        <button id="point">.</button>
         <button id="equal" class="orange">=</button>
       </div>
     </div>
