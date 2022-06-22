@@ -1,27 +1,22 @@
 /* --- Variables */
-
 :root {
+  --cal-width: 235px;
+  --cal-height: 320px;
+  --display-height: calc(var(--cal-height) / 4);
   --general-radius: 12px;
-  --display-height: 84px;
-  --calculator--width: 235px;
-  --calculator--height: 320px;
+  --display-margin: 15px;
 }
 
 /* --- Main Styles --- */
-/* p {
-  -webkit-text-size-adjust: auto;
-  text-size-adjust: auto;
-} */
-
 @font-face {
   font-family: "Roboto", sans-serif;
   src: url(https://fonts.googleapis.com/css2?family=RobotoRoboto:wght@100&display=swap);
-  font-weight: 300;
+  font-weight: 100;
 }
 
-#calculator {
-  height: var(--calculator--height);
-  width: var(--calculator--width);
+#cal {
+  height: var(--cal-height);
+  width: var(--cal-width);
   margin: 50px auto;
   border-radius: var(--general-radius);
   background-color: rgb(65, 65, 65);
@@ -29,9 +24,8 @@
 }
 
 #display {
-  outline: magenta solid 3px;
   height: var(--display-height);
-  width: var(--calculator-width);
+  width: var(--cal-width);
   border-top: 1px solid rgb(150, 150, 150);
   border-right: 1px solid rgb(150, 150, 150);
   border-left: 1px solid rgb(150, 150, 150);
@@ -42,25 +36,22 @@
 }
 
 #digits {
-  outline: red solid 2px;
-  width: calc(var(--calculator--width) - 30px);
-  height: calc(var(--display-height) - 15px);
-  margin: 15px;
   display: grid;
-  font-family: roboto;
-  font-size: 25px;
-  outline: yellow solid 3px;
-  width: calc(var(--calculator--width) - 30px);
+  width: calc(var(--cal-width) - 30px);
   height: calc(var(--display-height) - 15px);
+  font-size: 45px;
+  font-family: roboto;
   align-content: flex-end;
   justify-content: end;
   overflow: hidden;
+  margin: var(--display-margin);
+  /* outline: yellow solid 1px; */
 }
 
 #allKeys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 46px;
+  grid-auto-rows: 47px;
   grid-gap: 1px;
 }
 
@@ -73,7 +64,7 @@ button {
 }
 
 #zero {
-  width: 118px;
+  width: calc(var(--cal-width/2));
   grid-column: 1 / 3;
   border-radius: 0px 0px 0px var(--general-radius);
 }
@@ -88,6 +79,10 @@ button {
 
 .darkgrey {
   background-color: rgb(85, 85, 85);
+}
+
+.shrink-text {
+  font-size: 19px;
 }
 
 #allKeys button:active {

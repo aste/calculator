@@ -10,22 +10,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
       rel="stylesheet"
     />
     <script src="calculatorApp.js" defer></script>
   </head>
 
   <body>
-    <div id="calculator">
+    <div id="cal">
       <div id="display">
-        <div id="digits"></div>
+        <div id="digits" class="innerDisplay">0</div>
       </div>
       <div id="allKeys">
-        <button class="operator darkgrey">AC</button>
+        <button class="operator darkgrey shrink-text">AC</button>
         <button class="operator darkgrey">±</button>
-        <button class="operator darkgrey">%</button>
-        <button class="operator orange">/</button>
+        <button class="operator darkgrey shrink-text">%</button>
+        <button class="operator orange shrink-text">/</button>
         <button>7</button>
         <button>8</button>
         <button>9</button>
@@ -39,7 +39,7 @@
         <button>3</button>
         <button class="operator orange">+</button>
         <button id="zero">0</button>
-        <button id="point">.</button>
+        <button id="point">,</button>
         <button id="equal" class="orange">=</button>
       </div>
     </div>

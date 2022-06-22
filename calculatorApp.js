@@ -1,18 +1,35 @@
 // Odin exercise: Build a calculator with basic functionality, without using the eval() function
 
-// Declare variables from document
+// Variables from document
 const allKeys = document.querySelectorAll('#allKeys button')
 
-let currentVal = document.getElementById("digits").innerText;
-let operateVal = "";
-let decimalAdded = false;
+
+// Calculate displaywidth for sizing text later
+// let docuStyle = getComputedStyle(document.body)
+// let calWidth = docuStyle.getPropertyValue('--cal-width').split("px")[0]
+// let displayMargin = docuStyle.getPropertyValue('--display-margin').split("px")[0]
+// let displayWidth = calWidth - (2 * displayMargin)
+// let fontSize = "45"
+// let pixelFontSize = (fontSize) => { `${fontSize}px` }
 
 
-// Declare operators and operate functions
+// Update DOM
+const updateDisVal = (val) => { document.getElementById("digits").innerText = val }
+
+// Calculator variables
+let currentVal = "0"
+let operateVal = ""
+let decimalAdded = false
+let operatorActive = false
+
+// Calculator operators
+
 const add = (num1, num2) => console.log(num1 + num2)
 const subtract = (num1, num2) => console.log(num1 - num2)
 const multiply = (num1, num2) => console.log(num1 * num2)
 const divide = (num1, num2) => console.log(num1 / num2)
+
+// Operate function for all operators
 const operate = (operator, num1, num2) => operator(num1, num2)
 
 
@@ -21,37 +38,40 @@ const operate = (operator, num1, num2) => operator(num1, num2)
 for (var i = 0; i < allKeys.length; i++) {
     //add onclick event to each key
     allKeys[i].onclick = function (e) {
-        // assign buttonVal from inner HTML value
+        // Assign buttonVal from inner HTML value
         let buttonVal = this.innerHTML
         let buttonClass = this.className
 
         // add number value to numerical keys
         if (!isNaN(buttonVal)) {
             // display.setAttribute("value", display.getAttribute("value") + buttonVal)
-            document.getElementById("digits").innerText += buttonVal
-            currentVal = document.getElementById("digits").innerText
+            if (currentVal == "0") { currentVal = "" }
+            currentVal += buttonVal
+            updateDisVal(currentVal)
+        }
+        
+        // Special operators on current value
+        if (this.innerHTML == "±") {
+            currentVal *= -1
+            updateDisVal(currentVal)
+        }
+        if (this.innerHTML === "AC") {
+            currentVal = "0"
+            operateVal = ""
+            updateDisVal("0")
+        }
+        if (this.innerHTML == "%") {
+            currentVal /= 100
+            updateDisVal(currentVal)
         }
 
-        // implement operator functions
-        if (buttonClass == "operator") {
-            if (this.innerHTML == "+") { add(1, 2) }
-            if (this.innerHTML == "-") { subtract(1, 2) }
-            if (this.innerHTML == "x") { multiply(1, 2) }
-            if (this.innerHTML == "/") { divide(1, 2) }
-            if (this.innerHTML == "AC") {
-                console.log(currentVal.value)
-                currentVal.value = "1"
-                console.log(currentVal)
-            }
-            if (this.innerHTML == "±") { currentVal.value *= -1 }
-            if (this.innerHTML == "=") { console.log(currentVal.value) }
-            if (this.innerHTML == "%") {
-                // currentVal.value /= 100
-                currentVal.setAttribute("value", currentVal.getAttribute("value") + "1")
-                console.log(currentVal.value)
-            }
-        }
+
+        // Implement operator functions
+        // if (this.innerHTML == "+") { add(1, 2) }
+        // if (this.innerHTML == "-") { subtract(1, 2) }
+        // if (this.innerHTML == "x") { multiply(1, 2) }
+        // if (this.innerHTML == "/") { divide(1, 2) }
+
+        if (this.innerHTML == "=") { console.log(currentVal) }
     }
 }
-
-// let currentVal = currentVal.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
