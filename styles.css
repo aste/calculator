@@ -3,36 +3,58 @@
 :root {
   --general-radius: 12px;
   --display-height: 84px;
+  --calculator--width: 235px;
+  --calculator--height: 320px;
 }
 
 /* --- Main Styles --- */
+/* p {
+  -webkit-text-size-adjust: auto;
+  text-size-adjust: auto;
+} */
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url(https://fonts.googleapis.com/css2?family=RobotoRoboto:wght@100&display=swap);
+  font-weight: 300;
 }
 
 #calculator {
-  display: grid;
-  height: 320px;
-  width: 235px;
+  height: var(--calculator--height);
+  width: var(--calculator--width);
+  margin: 50px auto;
   border-radius: var(--general-radius);
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(65, 65, 65);
   outline: black solid 1px;
 }
 
 #display {
+  outline: magenta solid 3px;
   height: var(--display-height);
+  width: var(--calculator-width);
   border-top: 1px solid rgb(150, 150, 150);
   border-right: 1px solid rgb(150, 150, 150);
   border-left: 1px solid rgb(150, 150, 150);
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(65, 65, 65);
   border-radius: var(--general-radius) var(--general-radius) 0px 0px;
-  text-align: right;
-  text-align: bottom;
-  font-size: 50px;
   color: white;
+  white-space: normal;
+}
+
+#digits {
+  outline: red solid 2px;
+  width: calc(var(--calculator--width) - 30px);
+  height: calc(var(--display-height) - 15px);
+  margin: 15px;
+  display: grid;
+  font-family: roboto;
+  font-size: 25px;
+  outline: yellow solid 3px;
+  width: calc(var(--calculator--width) - 30px);
+  height: calc(var(--display-height) - 15px);
+  align-content: flex-end;
+  justify-content: end;
+  overflow: hidden;
 }
 
 #allKeys {
@@ -65,13 +87,9 @@ button {
 }
 
 .darkgrey {
-  background-color: rgb(90, 90, 90);
+  background-color: rgb(85, 85, 85);
 }
 
 #allKeys button:active {
-  filter: brightness(70%);
-}
-
-#allKeys.orange button:active {
   filter: brightness(80%);
 }

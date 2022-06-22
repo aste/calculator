@@ -2,8 +2,10 @@
 
 // Declare variables from document
 const allKeys = document.querySelectorAll('#allKeys button')
-let displayVal = document.getElementById("display").value
-let calVal = 0;
+
+let currentVal = document.getElementById("digits").innerText;
+let operateVal = "";
+let decimalAdded = false;
 
 
 // Declare operators and operate functions
@@ -13,19 +15,21 @@ const multiply = (num1, num2) => console.log(num1 * num2)
 const divide = (num1, num2) => console.log(num1 / num2)
 const operate = (operator, num1, num2) => operator(num1, num2)
 
+
+
 // Loop through all keys
 for (var i = 0; i < allKeys.length; i++) {
     //add onclick event to each key
     allKeys[i].onclick = function (e) {
-        // assign buttonVal from HTML value
+        // assign buttonVal from inner HTML value
         let buttonVal = this.innerHTML
         let buttonClass = this.className
 
         // add number value to numerical keys
         if (!isNaN(buttonVal)) {
             // display.setAttribute("value", display.getAttribute("value") + buttonVal)
-            displayVal = displayVal + buttonVal
-            console.log(displayVal);
+            document.getElementById("digits").innerText += buttonVal
+            currentVal = document.getElementById("digits").innerText
         }
 
         // implement operator functions
@@ -35,17 +39,19 @@ for (var i = 0; i < allKeys.length; i++) {
             if (this.innerHTML == "x") { multiply(1, 2) }
             if (this.innerHTML == "/") { divide(1, 2) }
             if (this.innerHTML == "AC") {
-                console.log(displayVal.value)
-                displayVal.value = "1"
-                console.log(displayVal)
+                console.log(currentVal.value)
+                currentVal.value = "1"
+                console.log(currentVal)
             }
-            if (this.innerHTML == "±") { displayVal.value *= -1 }
-            if (this.innerHTML == "=") { console.log(displayVal.value) }
+            if (this.innerHTML == "±") { currentVal.value *= -1 }
+            if (this.innerHTML == "=") { console.log(currentVal.value) }
             if (this.innerHTML == "%") {
-                // displayVal.value /= 100
-                displayVal.setAttribute("value", displayVal.getAttribute("value") + "1")
-                console.log(displayVal.value)
+                // currentVal.value /= 100
+                currentVal.setAttribute("value", currentVal.getAttribute("value") + "1")
+                console.log(currentVal.value)
             }
         }
     }
 }
+
+// let currentVal = currentVal.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
