@@ -88,3 +88,8 @@ button {
 #allKeys button:active {
   filter: brightness(80%);
 }
+
+#allKeyse button:active {
+  outline: black solid 2px;
+  filter: brightness(80%);
+}
