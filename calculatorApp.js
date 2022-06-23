@@ -18,21 +18,35 @@ const updateDisVal = (val) => { document.getElementById("digits").innerText = va
 
 // Calculator variables
 let currentVal = "0"
-let operateVal = ""
-let decimalAdded = false
+let tempCalVal = ""
+let currentOpr = ""
 let operatorActive = false
-
-// Calculator operators
-
-const add = (num1, num2) => console.log(num1 + num2)
-const subtract = (num1, num2) => console.log(num1 - num2)
-const multiply = (num1, num2) => console.log(num1 * num2)
-const divide = (num1, num2) => console.log(num1 / num2)
-
-// Operate function for all operators
-const operate = (operator, num1, num2) => operator(num1, num2)
+let decimalAdded = false
 
 
+// Operators
+const add = () => { tempCalVal = currentVal, operatorActive = true, currentOpr = "add" }
+const subtract = () => { tempCalVal = currentVal, operatorActive = true, currentOpr = "subtract" }
+const multiply = () => { tempCalVal = currentVal, operatorActive = true, currentOpr = "multiply" }
+const divide = () => { tempCalVal = currentVal, operatorActive = true, currentOpr = "divide" }
+
+// Operate function
+const operate = () => {
+    console.log(`tempCalVal is ${tempCalVal}, currentVal is ${currentVal}, currentOpr is ${currentOpr}`)
+    if (currentVal && tempCalVal) {
+        if (currentOpr == "add") { currentVal = String((Number(tempCalVal) + Number(currentVal))) }
+        else if (currentOpr == "subtract") { currentVal = String((Number(tempCalVal) - Number(currentVal))) }
+        else if (currentOpr == "multiply") { currentVal = String((Number(tempCalVal) * Number(currentVal))) }
+        else if (currentOpr == "divide") { currentVal = String((Number(tempCalVal) / Number(currentVal))) }
+    }
+    updateDisVal(currentVal)
+    tempCalVal = ""
+    console.log(`tempCalVal is ${tempCalVal} currentVal is ${currentVal}, currentOpr is ${currentOpr}`)
+
+}
+
+
+// console.log(String((Number(52) - Number(33))))
 
 // Loop through all keys
 for (var i = 0; i < allKeys.length; i++) {
@@ -40,38 +54,43 @@ for (var i = 0; i < allKeys.length; i++) {
     allKeys[i].onclick = function (e) {
         // Assign buttonVal from inner HTML value
         let buttonVal = this.innerHTML
-        let buttonClass = this.className
 
-        // add number value to numerical keys
+        // add a number in type to numerical key
         if (!isNaN(buttonVal)) {
-            // display.setAttribute("value", display.getAttribute("value") + buttonVal)
+            if (operatorActive) {
+                currentVal = ""
+                operatorActive = false
+            }
             if (currentVal == "0") { currentVal = "" }
             currentVal += buttonVal
+            console.log(currentVal)
             updateDisVal(currentVal)
         }
-        
-        // Special operators on current value
+
+        // Instant operators on current value
         if (this.innerHTML == "±") {
             currentVal *= -1
             updateDisVal(currentVal)
         }
         if (this.innerHTML === "AC") {
             currentVal = "0"
-            operateVal = ""
-            updateDisVal("0")
+            tempCalVal = ""
+            operatorActive = false
+            decimalAdded = false
+            currentOpr = ""
+            updateDisVal(currentVal)
         }
         if (this.innerHTML == "%") {
             currentVal /= 100
             updateDisVal(currentVal)
         }
 
+        // Operators with two inputs
+        if (this.innerHTML == "+") { add() }
+        if (this.innerHTML == "-") { subtract() }
+        if (this.innerHTML == "x") { multiply() }
+        if (this.innerHTML == "/") { divide() }
+        if (this.innerHTML == "=") { operate() }
 
-        // Implement operator functions
-        // if (this.innerHTML == "+") { add(1, 2) }
-        // if (this.innerHTML == "-") { subtract(1, 2) }
-        // if (this.innerHTML == "x") { multiply(1, 2) }
-        // if (this.innerHTML == "/") { divide(1, 2) }
-
-        if (this.innerHTML == "=") { console.log(currentVal) }
     }
 }
