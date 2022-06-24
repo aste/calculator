@@ -1,10 +1,9 @@
 /* --- Variables */
 :root {
-  --cal-width: 235px;
+  --cal-width: 420px;
   --cal-height: 320px;
   --display-height: calc(var(--cal-height) / 4);
   --general-radius: 12px;
-  --display-margin: 15px;
 }
 
 /* --- Main Styles --- */
@@ -33,18 +32,19 @@
   border-radius: var(--general-radius) var(--general-radius) 0px 0px;
   color: white;
   white-space: normal;
+  /* outline: magenta solid 2px; */
 }
 
 #digits {
   display: grid;
-  width: calc(var(--cal-width) - 30px);
-  height: calc(var(--display-height) - 15px);
-  font-size: 45px;
+  width: calc(var(--cal-width) - 60px);
+  height: calc(var(--display-height) - 30px);
+  font-size: 26px;
   font-family: roboto;
   align-content: flex-end;
   justify-content: end;
   overflow: hidden;
-  margin: var(--display-margin);
+  margin: 15px 0px 0px 20px;
   /* outline: yellow solid 1px; */
 }
 
